@@ -1,0 +1,222 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.app {
+	overflow: hidden;
+	display: flex;
+	background-color: #000000ff; /* 这块是背景颜色,一般来说不用改 */
+}
+
+.left_view {
+	float: left;
+	background: linear-gradient(-90deg, #00000000 90%,#800CFDff 90%); /* 这个是网页左边的紫色,这两个90%用来控制宽度 -90代表角度 你们只改颜色就行*/
+	z-index: 100;
+}
+	
+.right_view {
+	background: linear-gradient(90deg, #00000000 0%,#800CFDff 100%); /* 这个是网页右边的紫色渐变背景, 0% 和 100%是用来控制渐变范围  90代表角度 */
+	z-index: 100;
+}
+
+.characters {
+	width: 100%;
+	height: 100%;
+	position: relative
+}
+
+.characters img {
+	width: auto;
+	height: 90%;
+	z-index: 100;
+	position: absolute;
+	top: 50%;   /* 这个数字控制立绘离顶部的距离 */
+	left: 50%;  /* 这个数字控制立绘离左边的距离 */
+	transform: translate(-50%, -50%);
+}
+
+.characters div {
+	z-index: 1;
+}
+
+.band {
+	position: absolute;
+	z-index: 1;
+	background-image: url("../img/characters.png"); /* 这块是背景的立绘重影 改法和之前一样 */
+	background-size: 150%;
+	opacity: 0.4;
+	background-position: 55% 10%; /* 55%控制背景重影左右 10%控制上下 */
+	background-blend-mode: darken;
+}
+
+.logo {
+	width: auto;
+	height: auto;
+	filter: grayscale(80%);
+	background-size: cover;
+	z-index: -3;
+	position: relative;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+h1 {
+  margin: 0;
+  font-size: 4rem;
+  color: transparent;
+  background: linear-gradient(to right, #fff, #A049FCff,#A049FCff); /* 这块是logo和cn的文字渐变色, 只改颜色就行 */
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  position: relative;
+  letter-spacing: 0.4rem;
+  font-style: italic;
+}
+
+h1::before,
+h1::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: transparent;
+  -webkit-text-stroke: 12px #000; /* 这块是logo里的黑色部分 改颜色就行 */
+  z-index: -1;
+}
+
+h1::after {
+  -webkit-text-stroke: 17px #ffffff; /* 这块是logo外圈白色的部分 改颜色就行 */
+  z-index: -2;
+}
+
+h1:nth-child(2) {
+  margin-top: -12px;
+  font-size: 1.5rem;
+}
+
+.content:hover {
+  filter: none;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Dosis:500,800);
+p {
+	margin: 0;
+	width: auto;
+	color: transparent;
+	font-family: "微软雅黑", "Dosis", sans-serif;
+	background: linear-gradient(90deg, #fff 0, #A049FCff 90%); /* 这块是Rouza那块小字的渐变色,我这里是白色和紫色 */
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	-webkit-background-clip: text;
+	position: relative;
+	letter-spacing: 0.25rem;
+	font-style: italic;
+	font-weight: bold;
+	/* -webkit-text-stroke: 0.5px #ffffff; */
+}
+
+@import url(http://fonts.googleapis.com/css?family=Dosis:500,800);
+.text {
+    font-family: "微软雅黑", "Dosis", sans-serif;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: transparent; /* 设置文字颜色为透明 */
+    -webkit-text-stroke: 2px #A049FCff; /* 这块是人物立绘后面的装饰文字Rouza,改颜色就行 */
+    font-style: italic;
+}
+
+@media (min-width: 1000px) {
+	.app {
+		width: 100vw;
+		height: 100vh;
+	}
+	
+	.left_view {
+		width: 45vw;
+	}
+	
+	.right_view {
+		width: 55vw;
+	}
+	
+	.band {
+		width: 100vw;
+		height: 100vh;
+	}
+	
+	.text {
+		font-size: 27vh;
+		line-height: 27vh;
+		right: 10vh;
+		margin-bottom: 5vh;
+	}
+	
+	.logo {
+		margin-left: 6vw;
+		margin-bottom: 15vh;
+	}
+	
+	p {
+		font-size: 5vh;
+		margin-left: 7vw;
+	}
+	
+	.cn {
+		position: absolute;
+		bottom: -10vh;
+	}
+	
+	.cn h1 {
+		font-size: 10vh;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.app {
+		transform: rotate(90deg) translateY(-100%);
+		transform-origin: top left;
+		width: 100vh;
+		height: 100vw;
+	}
+	
+	.left_view {
+		width: 45vh;
+	}
+	
+	.right_view {
+		width: 55vh;
+	}
+	
+	.band {
+		width: 100vh;
+		height: 100vw;
+	}
+	
+	.text {
+		font-size: 27vw;
+		line-height: 27vw;
+		right: 10vw;
+		top: 2vw;
+	}
+	
+	.logo {
+		margin-left: 7vh;
+		margin-bottom: 15vw;
+	}
+	
+	p {
+		font-size: 5vw;
+		margin-left: 7vh;
+	}
+	
+	.cn {
+		position: absolute;
+		bottom: -10vw;
+	}
+	
+	.cn h1 {
+		font-size: 10vw;
+	}
+}
